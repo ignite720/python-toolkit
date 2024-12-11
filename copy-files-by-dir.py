@@ -22,7 +22,7 @@ def main():
             if i.is_file():
                 src_files[i.name] = i
 
-    dst_files = []
+    dst_files = list()
     for ext in extensions:
         dst_files = (dst_files + list(dst_dir.rglob(ext)))
         

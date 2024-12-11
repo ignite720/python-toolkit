@@ -1,5 +1,15 @@
 from pathlib import Path
 
+def list_files(patterns, dirs_to_include, dirs_to_exclude):
+    files = list()
+    for dir_to_inc in dirs_to_include:
+        for pat in patterns:
+            for file_path in Path(dir_to_inc).rglob(pat):
+                file_path_str = str(file_path)
+                if not any(file_path_str.startswith(dir_to_exc) for dir_to_exc in dirs_to_exclude):
+                    files.append(file_path)
+    return files
+
 def process_file(file_path, spaces_per_tab=4):
     with open(file_path, "r") as fp:
         content = fp.read()
@@ -10,7 +20,7 @@ def process_file(file_path, spaces_per_tab=4):
             fp.write(updated_content)
         print(f"Processed file: {file_path}")
 
-EXTENSIONS = (
+PATTERNS = (
     "*.h",
     "*.cpp",
     "*.yml",
@@ -19,26 +29,22 @@ EXTENSIONS = (
     "*.py",
     "*.lua",
 )
-TARGET_DIRS = (
+DIRS_TO_INCLUDE = (
     #"./",
-    ".github",
-    "app",
-    "app-rs",
-    "app-rs-android",
-    "foobar",
-    "libraries/app_core",
-    "libraries/bar",
-    "libraries/foo",
-    "libraries/test",
+    "wkslight",
+)
+DIRS_TO_EXCLUDE = (
+    "wkslight/.git",
+    "wkslight/libraries/lua",
+    "wkslight/premake5-modules/android-studio",
+    "wkslight/premake5-modules/emscripten",
+    "wkslight/premake5-modules/winrt",
 )
 
-files = []
-for dir in TARGET_DIRS:
-    for ext in EXTENSIONS:
-        files = (files + list(Path(dir).rglob(ext)))
-
+files = list_files(PATTERNS, DIRS_TO_INCLUDE, DIRS_TO_EXCLUDE)
 for i in files:
     if i.is_dir():
-        print(f"warning: is_dir => {i}")
+        print(f"Fatal error: is_dir => {i}")
+        break
     else:
         process_file(i)

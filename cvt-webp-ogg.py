@@ -1,14 +1,14 @@
 from pathlib import Path
 import os
 
-EXTENSIONS = (
+PATTERNS = (
     "*.wav",
     "*.png",
 )
 
-files = []
-for ext in EXTENSIONS:
-    files = (files + list(Path("./").rglob(ext)))
+files = list()
+for pat in PATTERNS:
+    files = (files + list(Path("./").rglob(pat)))
 
 for i in files:
     print(i)

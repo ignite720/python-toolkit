@@ -7,8 +7,8 @@ def delete_dir(dir: Path):
         shutil.rmtree(dir)
     except Exception as e:
         print(f"{str(type(e))}: {e}")
-        
-def delete_files(dir: Path=Path("foobar"), extensions=("*.foo", "*.bar", "foobar.*"), exclude_files=("foo.txt", "bar.txt")):
+
+def delete_files(dir: Path=Path("foobar"), extensions=("*.foo", "*.bar", "foobar.*",), exclude_files=("foo.txt", "bar.txt",)):
     files = set()
     for ext in extensions:
         files.update(set(Path(dir).rglob(ext)))
@@ -25,4 +25,4 @@ delete_dir(Path("foo/bar") / "foobar")
 delete_dir(Path("foo/bar/foobar"))
 
 delete_files()
-delete_files("foo/bar", ("*.*"), (".foobar"))
+delete_files("foo/bar", ("*.*",), (".foobar",))

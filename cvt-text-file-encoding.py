@@ -17,14 +17,14 @@ def convert_text_file_encoding(oldfile, newfile, from_encoding="", to_encoding="
     except Exception as e:
         print(e)
         
-EXTENSIONS = (
+PATTERNS = (
     "*.h",
     "*.cpp",
 )
 
-files = []
-for ext in EXTENSIONS:
-    files = (files + list(Path("./").rglob(ext)))
+files = list()
+for pat in PATTERNS:
+    files = (files + list(Path("./").rglob(pat)))
 
 for i in files:
     # eg. cp1252 is equivalent to Latin-1, cp936 is GBK, cp932 is Shift_JIS, cp949 is EUC-KR, respectively
