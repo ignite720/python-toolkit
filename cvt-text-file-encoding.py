@@ -21,10 +21,23 @@ PATTERNS = (
     "*.h",
     "*.cpp",
 )
+DIRS_TO_INCLUDE = (
+    "./",
+    ".github",
+    "app",
+    "app-rs",
+    "app-rs-android",
+    "foobar",
+    "libraries/app_core",
+    "libraries/bar",
+    "libraries/foo",
+    "libraries/test",
+)
 
 files = list()
-for pat in PATTERNS:
-    files = (files + list(Path("./").rglob(pat)))
+for dir_to_inc in DIRS_TO_INCLUDE:
+    for pat in PATTERNS:
+        files = (files + list(Path(dir_to_inc).rglob(pat)))
 
 for i in files:
     # eg. cp1252 is equivalent to Latin-1, cp936 is GBK, cp932 is Shift_JIS, cp949 is EUC-KR, respectively
