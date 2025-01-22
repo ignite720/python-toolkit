@@ -22,10 +22,15 @@ def process_file(file_path, spaces_per_tab=4):
 
 PATTERNS = (
     "*.c",
+    "*.cc",
     "*.cpp",
+    "*.cxx",
     "*.h",
     "*.hpp",
+    "*.hxx",
     "*.inl",
+    "*.ipp",
+    "*.tpp",
     "*.java",
     "*.lua",
     "*.py",
@@ -35,7 +40,8 @@ PATTERNS = (
 )
 DIRS_TO_INCLUDE = (
     #"./",
-    "wkslight",
+    "include",
+    "src",
 )
 DIRS_TO_EXCLUDE = (
     "wkslight/.git",

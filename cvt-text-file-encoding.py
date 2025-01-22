@@ -22,14 +22,24 @@ def convert_text_file_encoding(oldfile, newfile, from_encoding="", to_encoding="
         
 PATTERNS = (
     "*.c",
+    "*.cc",
     "*.cpp",
+    "*.cxx",
     "*.h",
     "*.hpp",
+    "*.hxx",
     "*.inl",
+    "*.ipp",
+    "*.tpp",
+    "*.java",
+    "*.lua",
+    "*.py",
     "*.rs",
 )
 DIRS_TO_INCLUDE = (
     "./",
+    "include",
+    "src",
     "wkslight/.github",
     "wkslight/app",
     "wkslight/app-rs",
