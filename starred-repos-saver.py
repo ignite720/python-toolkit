@@ -57,7 +57,7 @@ while True:
             repo_items.append(item_lite)
         starred_repos.extend(repo_items)
         
-        print(f"Page: {page}, {len(data)}/{len(repo_items)} items received, total => {len(starred_repos)}")
+        print(f"Page: {page}, {len(data)}/{len(repo_items)} items received, total => {len(starred_repos):,}")
         time.sleep(0.2)
         page += 1
     else:
@@ -69,5 +69,5 @@ if len(starred_repos) > 0:
     with open(output_path, mode="w", encoding="utf-8", newline="\n") as f:
         json.dump(starred_repos, f, indent=4)
 
-    print(f"The list({page - 1} pages, {len(starred_repos)} items) of all starred repositories have been saved to the file '{output_path}'")
+    print(f"The list({page - 1} pages, {len(starred_repos):,} items) of all starred repositories have been saved to the file '{output_path}'")
     time.sleep(5.0)
