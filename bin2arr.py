@@ -1,6 +1,6 @@
-import sys
-import re
 from pathlib import Path
+import re
+import sys
 
 CHARS_PER_LINE = 16
 

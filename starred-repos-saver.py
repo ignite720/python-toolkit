@@ -1,6 +1,7 @@
-import requests
 import json
 import time
+
+import requests
 
 CONFIG_FILENAME = "starred-repos-saver-config.json"
 

@@ -1,0 +1,11 @@
+wkslight/.git
+wkslight/libraries/FastNoise2
+wkslight/libraries/headeronly
+wkslight/libraries/lua
+wkslight/libraries/sol2
+wkslight/libraries/spdlog
+wkslight/libraries/XMath
+wkslight/premake5-modules/android-studio
+wkslight/premake5-modules/emscripten
+wkslight/premake5-modules/ninja
+wkslight/premake5-modules/winrt

@@ -1,6 +1,7 @@
-from pathlib import Path
-import chardet
 import codecs
+from pathlib import Path
+
+import chardet
 
 def convert_text_file_encoding(oldfile, newfile, from_encoding="", to_encoding="utf-8-sig"):
     from_encoding_confidence = 1.0
@@ -39,23 +40,11 @@ PATTERNS = (
     "*.py",
     "*.rs",
 )
-DIRS_TO_INCLUDE = (
-    "./",
-    "include",
-    "src",
-    "wkslight/.github",
-    "wkslight/app",
-    "wkslight/app-rs",
-    "wkslight/app-rs-android",
-    "wkslight/foobar",
-    "wkslight/libraries/app_core",
-    "wkslight/libraries/bar",
-    "wkslight/libraries/foo",
-    "wkslight/libraries/test",
-)
+
+dirs_to_include = sys.argv[1:] if len(sys.argv) > 1 else ["."]
 
 files = list()
-for dir_to_inc in DIRS_TO_INCLUDE:
+for dir_to_inc in dirs_to_include:
     for pat in PATTERNS:
         files = (files + list(Path(dir_to_inc).rglob(pat)))
 

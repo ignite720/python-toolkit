@@ -1,5 +1,5 @@
-import socket
 import requests
+import socket
 
 async def get_ip_async(api_url:str="http://ip-api.com/json"):
     r = requests.get(api_url)

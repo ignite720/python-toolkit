@@ -1,6 +1,6 @@
-import sys
-import shutil
 from pathlib import Path
+import shutil
+import sys
 
 def pathlib_copytree(src_dir, dst_dir, extensions=("*.*",)):
     for ext in extensions:

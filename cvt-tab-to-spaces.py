@@ -1,5 +1,12 @@
 from pathlib import Path
 
+def read_dirs_to_exclude(path: str=".dirs_to_exclude.txt"):
+    try:
+        with open(path, 'r', encoding='utf-8') as fp:
+            return [line.strip() for line in fp.readlines()]
+    except (IOError, UnicodeDecodeError):
+        return []
+
 def list_files(patterns, dirs_to_include, dirs_to_exclude):
     files = list()
     for dir_to_inc in dirs_to_include:
@@ -39,26 +46,10 @@ PATTERNS = (
     "*.sh",
     "*.yml",
 )
-DIRS_TO_INCLUDE = (
-    #"./",
-    "include",
-    "src",
-)
-DIRS_TO_EXCLUDE = (
-    "wkslight/.git",
-    "wkslight/libraries/FastNoise2",
-    "wkslight/libraries/headeronly",
-    "wkslight/libraries/lua",
-    "wkslight/libraries/sol2",
-    "wkslight/libraries/spdlog",
-    "wkslight/libraries/XMath",
-    "wkslight/premake5-modules/android-studio",
-    "wkslight/premake5-modules/emscripten",
-    "wkslight/premake5-modules/ninja",
-    "wkslight/premake5-modules/winrt",
-)
 
-files = list_files(PATTERNS, DIRS_TO_INCLUDE, DIRS_TO_EXCLUDE)
+dirs_to_include = sys.argv[1:] if len(sys.argv) > 1 else ["."]
+dirs_to_exclude = read_dirs_to_exclude()
+files = list_files(PATTERNS, dirs_to_include, dirs_to_exclude)
 for i in files:
     if i.is_dir():
         print(f"Fatal error: is_dir => {i}")
