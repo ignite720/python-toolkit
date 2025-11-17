@@ -1,5 +1,6 @@
 import codecs
 from pathlib import Path
+import sys
 
 import chardet
 

@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 
 def read_dirs_to_exclude(path: str=".dirs_to_exclude.txt"):
     try:
