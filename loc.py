@@ -7,6 +7,7 @@ PATTERNS = (
     "*.c",
     "*.cc",
     "*.cpp",
+    "*.cppm",
     "*.cs",
     "*.cxx",
     "*.glsl",
@@ -18,6 +19,7 @@ PATTERNS = (
     "*.hxx",
     "*.inl",
     "*.ipp",
+    "*.ixx",
     "*.java",
     "*.js",
     "*.kt",
@@ -32,7 +34,7 @@ PATTERNS = (
     "*.ts",
 )
 
-if False:
+if True:
     langs = sorted(list(PATTERNS))
     for lang in langs:
         print(f"\"{lang}\",")
