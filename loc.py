@@ -34,7 +34,7 @@ PATTERNS = (
     "*.ts",
 )
 
-if True:
+if False:
     langs = sorted(list(PATTERNS))
     for lang in langs:
         print(f"\"{lang}\",")
